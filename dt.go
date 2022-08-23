@@ -73,6 +73,10 @@ func FilterErr[V any](
 	return result, nil
 }
 
+type (
+	ReduceIteratee[T any, R any]             func(R, T) R
+	ReduceErrIteratee[T any, R any, E error] func(R, T) (R, E)
+)
 
 // Reduce is stolen from samber/lo but improved with proper error handling and
 // without the useless `i` argument.
